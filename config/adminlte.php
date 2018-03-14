@@ -111,8 +111,7 @@ return [
         'MAIN NAVIGATION',
         [
             'text' => 'Blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'url'  => '',
         ],
         [
             'text'        => 'Pages',
