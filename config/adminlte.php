@@ -111,11 +111,11 @@ return [
         'MAIN NAVIGATION',
         [
             'text' => 'Blog',
-            'url'  => '',
+            'url'  => '#',
         ],
         [
             'text'        => 'Pages',
-            'url'         => '',
+            'url'         => '#',
             'icon'        => 'file',
             'label'       => 4,
             'label_color' => 'success',
@@ -123,12 +123,12 @@ return [
         'ACCOUNT SETTINGS',
         [
             'text' => 'Profile',
-            'url'  => '',
+            'url'  => '#',
             'icon' => 'user',
         ],
         [
             'text' => 'Change Password',
-            'url'  => '',
+            'url'  => '#',
             'icon' => 'lock',
         ],
         [
