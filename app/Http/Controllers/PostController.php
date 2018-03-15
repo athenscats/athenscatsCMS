@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Session;
 use Illuminate\Http\Request;
 
-class PostsController extends Controller
+use App\Post;
+
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,6 +17,12 @@ class PostsController extends Controller
     public function index()
     {
         //
+        $data = Post::all();
+        //$title = trans('trclient.all_clients');
+        //$title = __('general.hotels_view');
+        $title = "All Posts";
+        return view('admin.posts.index')->with('data', $data)->with('title', $title);
+    
     }
 
     /**
@@ -24,6 +33,12 @@ class PostsController extends Controller
     public function create()
     {
         //
+        //
+
+        //$title = trans('trclient.all_clients');
+        //$title = __('general.hotels_add');
+        $title = 'Add Post';
+        return view('admin.posts.create')->with('title', $title);
     }
 
     /**
@@ -35,6 +50,28 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+            'title' => 'required|max:255',
+         
+        ]);
+
+        //$featured = $request->featured;
+
+        //$featured_new_name = time() . $featured->getClientOriginalName();
+
+       // $featured->move('uploads/posts', $featured_new_name);
+
+        Post::create([
+            'title' => $request->title,
+            'content' => $request->content,
+            'category_id' => 1,
+            'featured' => 'a'
+           // 'featured' => 'uploads/posts/' . $featured_new_name
+
+        ]);
+
+        Session::flash('success', trans('posts.flash_new'));
+        return redirect()->route('posts.index');
     }
 
     /**
