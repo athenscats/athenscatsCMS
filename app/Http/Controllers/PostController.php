@@ -6,6 +6,7 @@ use Session;
 use Illuminate\Http\Request;
 
 use App\Post;
+use App\Category;
 
 class PostController extends Controller
 {
@@ -17,7 +18,7 @@ class PostController extends Controller
     public function index()
     {
         //
-        $data = Post::all();
+        $data = Post::with('category')->get();
         //$title = trans('trclient.all_clients');
         //$title = __('general.hotels_view');
         $title = "All Posts";
@@ -38,7 +39,7 @@ class PostController extends Controller
         //$title = trans('trclient.all_clients');
         //$title = __('general.hotels_add');
         $title = 'Add Post';
-        return view('admin.posts.create')->with('title', $title);
+        return view('admin.posts.create')->with('title', $title)->with('categories', Category::all());
     }
 
     /**
@@ -52,20 +53,25 @@ class PostController extends Controller
         //
         $this->validate($request, [
             'title' => 'required|max:255',
+            'featured' => 'image',
+            'content' => 'required',
+            'category_id' => 'required'
          
         ]);
 
-        //$featured = $request->featured;
+        $featured = $request->featured;
 
-        //$featured_new_name = time() . $featured->getClientOriginalName();
+        $featured_new_name = time() . $featured->getClientOriginalName();
 
-       // $featured->move('uploads/posts', $featured_new_name);
+        $featured->move('uploads/posts', $featured_new_name);
+
+       //dd($request->all());
 
         Post::create([
             'title' => $request->title,
             'content' => $request->content,
-            'category_id' => 1,
-            'featured' => 'a'
+            'featured' => 'uploads/posts/' . $featured_new_name,
+            'category_id' => $request->category_id,
            // 'featured' => 'uploads/posts/' . $featured_new_name
 
         ]);
@@ -117,5 +123,9 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
+        $post = Post::find($id);
+        $post->delete();
+        Session::flash('success', trans('posts.flash_delete'));
+        return redirect()->route('posts.index');
     }
 }

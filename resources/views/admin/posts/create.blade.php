@@ -7,21 +7,7 @@
 @stop
 
 @section('content')
-    @if(count($errors)>0)
-    <div class="alert alert-danger alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <h4><i class="icon fa fa-ban"></i> Alert!</h4>
-        <ul >
-            @foreach($errors->all() as $error)
-            <li>
-                {{$error}}
-            </li>
-            @endforeach
-        </ul>
-      </div>
-
-
-    @endif
+@include('admin.includes.errors')
     <!-- Small boxes (Stat box) -->
     <div class="row">
         <div class="col-lg-6 col-xs-12">
@@ -37,7 +23,7 @@
                     </div>
                 </div>
                 <div class="box-body">
-                    <form action="{{ route('posts.store') }}" method="post">
+                    <form action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label for="title" >@lang('posts.title')</label>
@@ -47,9 +33,13 @@
                         <div class="row">
                             <div class="col-xs-12 col-lg-6">
                                 <div class="form-group">
-                                    <label for="category_id" >@lang('posts.category')</label>
-                                    <input type="text" name="category_id" class="form-control">
-
+                                    <label for="category_id">@lang('categories.name')</label>
+                                    <select class="form-control category_id" name="category_id" style="width: 100%;">
+                                        @foreach($categories as $category)
+                                            <option value="{{$category->id}}">{{$category->name}}</option>
+                                        @endforeach
+                                    </select>
+        
                                 </div>
                             </div>
                             <div class="col-xs-12 col-lg-6">

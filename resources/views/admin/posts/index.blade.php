@@ -35,6 +35,7 @@
                         <tr>
                             <th>@lang('posts.title')    </th>
                             <th>@lang('posts.content')</th>
+                            <th>@lang('posts.featured')</th>
                             <th>@lang('posts.category')</th>
                             <th width="280px">@lang('general.action')</th>
                         </tr>
@@ -44,7 +45,8 @@
                             <tr>
                                 <td>    {{$dat->title}}</td>
                                 <td>    {{$dat->content}}</td>
-                                <td>    {{$dat->category}}</td>
+                                <td>    {{$dat->featured}}</td>
+                                <td>    {{$dat->category_id}}</td>
                                 
                                 <td>
 
@@ -74,7 +76,8 @@
                         <tfoot>
                         <tr>
                             <th>@lang('posts.title')    </th>
-                            <th>@lang('posts.description')</th>
+                            <th>@lang('posts.content')</th>
+                            <th>@lang('posts.featured')</th>
                             <th>@lang('posts.category')</th>
                             <th width="280px">@lang('general.action')</th>
                         </tr>
