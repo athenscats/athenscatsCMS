@@ -33,9 +33,8 @@
                     <table id="data" class="table table-bordered table-hover table-striped">
                         <thead>
                         <tr>
-                            <th>@lang('posts.title')    </th>
-                            <th>@lang('posts.content')</th>
                             <th>@lang('posts.featured')</th>
+                            <th>@lang('posts.title')    </th>                      
                             <th>@lang('posts.category')</th>
                             <th width="280px">@lang('general.action')</th>
                         </tr>
@@ -43,9 +42,8 @@
                         <tbody>
                         @foreach($data as $dat)
                             <tr>
-                                <td>    {{$dat->title}}</td>
-                                <td>    {{$dat->content}}</td>
-                                <td>    {{$dat->featured}}</td>
+                                <td>    <img src="{{$dat->featured}}" alt="{{$dat->title}}" width="90px"></td>
+                                <td>    {{$dat->title}}</td> 
                                 <td>    {{$dat->category->name}}</td>
                                 
                                 <td>
@@ -57,12 +55,12 @@
                                         <input type="hidden" name="_method" value="delete">
                                         <div class="btn-group">
                                             <a href="{{ route('posts.show',$dat->id) }}" data-toggle="tooltip"
-                                               title="View Hotel" class="btn btn-default btn-sm"><i
+                                               title="View Post" class="btn btn-default btn-sm"><i
                                                         class='fa fa-eye'></i></a>
                                             <a href="{{ route('posts.edit',$dat->id) }}" data-toggle="tooltip"
-                                               title="Edit Hotel" class="btn btn-default btn-sm"><i
+                                               title="Edit Post" class="btn btn-default btn-sm"><i
                                                         class='fa fa-pencil'></i></a>
-                                            <button type="submit" data-toggle="tooltip" title="Delete Hotel"
+                                            <button type="submit" data-toggle="tooltip" title="Delete Post"
                                                     class="btn btn-default btn-sm"><i class='fa fa-trash'></i></button>
                                         </div>
                                     </form>
@@ -75,11 +73,10 @@
                         </tbody>
                         <tfoot>
                         <tr>
-                            <th>@lang('posts.title')    </th>
-                            <th>@lang('posts.content')</th>
-                            <th>@lang('posts.featured')</th>
-                            <th>@lang('posts.category')</th>
-                            <th width="280px">@lang('general.action')</th>
+                                <th>@lang('posts.featured')</th>
+                                <th>@lang('posts.title')    </th>                      
+                                <th>@lang('posts.category')</th>
+                                <th width="280px">@lang('general.action')</th>
                         </tr>
                         </tfoot>
                     </table>

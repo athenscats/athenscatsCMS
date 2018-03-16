@@ -19,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
             $event->menu->add('Service Provider MENU');
             $event->menu->add([
                 'text' => __('general.posts'),
-                'icon' => 'hotel',
+                'icon' => 'file-o',
                 'submenu' => [
                     [
                         'text' => __('general.posts_view'),
@@ -34,7 +34,7 @@ class AppServiceProvider extends ServiceProvider
             ]);   
             $event->menu->add([
                 'text' => __('general.categories'),
-                'icon' => 'hotel',
+                'icon' => 'circle-o-notch',
                 'submenu' => [
                     [
                         'text' => __('general.categories_view'),

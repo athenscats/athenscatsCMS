@@ -35,6 +35,13 @@ class PostController extends Controller
     {
         //
         //
+        $categories = Category::all();
+
+        if($categories->count() == 0)
+        {
+            Session::flash('info', 'Insert categories');
+            return redirect()->back();
+        }
 
         //$title = trans('trclient.all_clients');
         //$title = __('general.hotels_add');
@@ -55,7 +62,8 @@ class PostController extends Controller
             'title' => 'required|max:255',
             'featured' => 'image',
             'content' => 'required',
-            'category_id' => 'required'
+            'category_id' => 'required',
+            
          
         ]);
 
@@ -72,7 +80,7 @@ class PostController extends Controller
             'content' => $request->content,
             'featured' => 'uploads/posts/' . $featured_new_name,
             'category_id' => $request->category_id,
-           // 'featured' => 'uploads/posts/' . $featured_new_name
+            'slug' => str_slug($request->title)
 
         ]);
 
