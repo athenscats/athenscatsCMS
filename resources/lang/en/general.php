@@ -29,24 +29,15 @@ return [
     'signup' => 'Sign Up',
     'admin' => 'Admin',
 
-    'bookings' => 'Bookings',
-    'bookings_view' => 'All Bookings',
-    'bookings_add' => 'New Booking',
 
-    'clients' => 'Clients',
-    'clients_view' => 'All Clients',
-    'clients_add' => 'New Client',
 
-    'packages' => 'Packages',
-    'packages_view' => 'All Packages',
-    'packages_add' => 'New Package',
+    'categories' => 'Categories',
+    'categories_view' => 'All Categories',
+    'categories_add' => 'New Category',
 
     'posts' => 'Posts',
     'posts_view' => 'All Posts',
     'posts_add' => 'New Post',
 
-    'departureLocations' => 'Departure Locations',
-    'departureLocations_view' => 'All Departure Locations',
-    'departureLocations_add' => 'New Departure Location',
 
 ];

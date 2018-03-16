@@ -55,7 +55,7 @@
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">
-                    Go stay
+                    Athens Cats CMS - 2018
                 </div>
                 <!-- /.box-footer-->
             </div>

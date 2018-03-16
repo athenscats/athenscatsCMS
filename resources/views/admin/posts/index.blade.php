@@ -46,7 +46,7 @@
                                 <td>    {{$dat->title}}</td>
                                 <td>    {{$dat->content}}</td>
                                 <td>    {{$dat->featured}}</td>
-                                <td>    {{$dat->category_id}}</td>
+                                <td>    {{$dat->category->name}}</td>
                                 
                                 <td>
 
@@ -88,7 +88,7 @@
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
-            Go stay
+            Athens Cats CMS - 2018
         </div>
         <!-- /.box-footer-->
     </div>
