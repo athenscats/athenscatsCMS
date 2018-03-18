@@ -26,6 +26,10 @@ class AppServiceProvider extends ServiceProvider
                         'url' => route('posts.index'),
                     ],
                     [
+                        'text' => __('general.trashed_posts_view'),
+                        'url' => route('posts.trashed'),
+                    ],
+                    [
                         'text' => __('general.posts_add'),
                         'url' => route('posts.create'),
 

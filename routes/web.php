@@ -21,6 +21,18 @@ Route::get('/admin', 'HomeController@index')->name('admin');
 
 Route::group(['prefix' => 'admin', 'middleware'=> 'auth'], function (){
 
+    Route::get('posts/trashed',  [
+        'uses' => 'PostController@trashed',
+        'as' => 'posts.trashed'
+    ]);
+    Route::get('posts/kill/{id}',  [
+        'uses' => 'PostController@kill',
+        'as' => 'posts.kill'
+    ]);
+    Route::get('posts/restore/{id}',  [
+        'uses' => 'PostController@restore',
+        'as' => 'posts.restore'
+    ]);
     Route::resource('posts', 'PostController');
     Route::resource('categories', 'CategoryController');
 

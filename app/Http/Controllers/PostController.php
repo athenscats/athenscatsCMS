@@ -108,6 +108,9 @@ class PostController extends Controller
     public function edit($id)
     {
         //
+        $post = Post::find($id);
+        $title = __('posts.update_post');
+        return view('admin.posts.edit')->with('data', $post)->with('title', $title)->with('categories', Category::all());
     }
 
     /**
@@ -119,7 +122,40 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
         //
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            'featured' => 'image',
+            'content' => 'required',
+            'category_id' => 'required',
+            
+         
+        ]);
+
+        $post = Post::find($id);
+
+        if ($request->hasFile('featured'))
+        {
+            $featured = $request->featured;
+
+            $featured_new_name = time() . $featured->getClientOriginalName();
+    
+            $featured->move('uploads/posts', $featured_new_name);
+
+            $post->featured = 'uploads/posts/' . $featured_new_name;
+        }
+
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->category_id = $request->category_id;
+        $post->slug = str_slug($request->title);
+        $post->save();
+
+
+
+        Session::flash('success', trans('posts.flash_updated'));
+        return redirect()->route('posts.index');
     }
 
     /**
@@ -135,5 +171,25 @@ class PostController extends Controller
         $post->delete();
         Session::flash('success', trans('posts.flash_delete'));
         return redirect()->route('posts.index');
+    }
+
+    public function trashed(){
+        $data = Post::onlyTrashed()->get();
+        $title = "All Trashed Posts";
+        return view('admin.posts.trashed')->with('data', $data)->with('title', $title);
+    }
+    public function restore($id){
+        $data = Post::withTrashed()->where('id', $id)->first();
+        $data->restore();
+        Session::flash('success', trans('posts.restore_post'));
+        return redirect()->back();
+  
+    }
+    public function kill($id){
+        $data = Post::withTrashed()->where('id', $id)->first();
+        $data->forceDelete();
+        Session::flash('success', trans('posts.permadelete'));
+        return redirect()->back();
+  
     }
 }
