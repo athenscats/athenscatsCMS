@@ -56,6 +56,27 @@
                             </div>
                         </div>
                         <div class="row">
+                                <div class="col-xs-12">
+                                        <label for="tags">Tags</label>
+                                        @foreach($tags as $tag)                               
+                                        <div class="checkbox">
+                                                <label>
+                                                  <input type="checkbox" name="tags[]" value="{{$tag->id}}"
+                                                  @foreach($data->tags as $t)
+                                                        @if($tag->id == $t-> id)
+                                                            checked
+                                                        @endif
+                                                  @endforeach
+                                                  
+                                                  > {{$tag->name}}
+                                                </label>
+                                              </div>
+                                    @endforeach
+    
+                                    
+                                </div>
+                            </div>
+                        <div class="row">
                             <div class="col-xs-12">
                                 <label for="content">Content</label>
                             <textarea name="content" id="" cols="5" rows="5" class="form-control">{{$data->content}}</textarea>

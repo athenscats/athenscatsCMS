@@ -50,6 +50,21 @@ class AppServiceProvider extends ServiceProvider
 
                     ],
                 ],
+            ]);
+            $event->menu->add([
+                'text' => __('general.tags'),
+                'icon' => 'circle-o-notch',
+                'submenu' => [
+                    [
+                        'text' => __('general.tags_view'),
+                        'url' => route('tags.index'),
+                    ],
+                    [
+                        'text' => __('general.tags_add'),
+                        'url' => route('tags.create'),
+
+                    ],
+                ],
             ]);          
         });
     }

@@ -43,11 +43,26 @@
                                 </div>
                             </div>
                             <div class="col-xs-12 col-lg-6">
+                        
                                 <div class="form-group">
-                                    <label for="featured" >Post Featured Image</label>
-                                    <input type="file" name="featured" class="form-control">
+                                        <label for="featured" >Post Featured Image</label>
+                                        <input type="file" name="featured">             
+                                    <p class="help-block">Insert Featured Image.</p>
+                                  </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                    <label for="tags">Tags</label>
+                                    @foreach($tags as $tag)                               
+                                    <div class="checkbox">
+                                            <label>
+                                              <input type="checkbox" name="tags[]" value="{{$tag->id}}"> {{$tag->name}}
+                                            </label>
+                                          </div>
+                                @endforeach
 
-                                </div>
+                                
                             </div>
                         </div>
                         <div class="row">

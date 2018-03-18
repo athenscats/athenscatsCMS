@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Post;
 use App\Category;
+use App\Tag;
 
 class PostController extends Controller
 {
@@ -46,7 +47,9 @@ class PostController extends Controller
         //$title = trans('trclient.all_clients');
         //$title = __('general.hotels_add');
         $title = 'Add Post';
-        return view('admin.posts.create')->with('title', $title)->with('categories', Category::all());
+        return view('admin.posts.create')->with('title', $title)
+                                        ->with('categories', Category::all())
+                                        ->with('tags', Tag::all());
     }
 
     /**
@@ -57,10 +60,11 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+
         //
         $this->validate($request, [
             'title' => 'required|max:255',
-            'featured' => 'image',
+            'featured' => 'required|image',
             'content' => 'required',
             'category_id' => 'required',
             
@@ -75,7 +79,7 @@ class PostController extends Controller
 
        //dd($request->all());
 
-        Post::create([
+        $post = Post::create([
             'title' => $request->title,
             'content' => $request->content,
             'featured' => 'uploads/posts/' . $featured_new_name,
@@ -83,6 +87,8 @@ class PostController extends Controller
             'slug' => str_slug($request->title)
 
         ]);
+
+        $post->tags()->attach($request->tags);
 
         Session::flash('success', trans('posts.flash_new'));
         return redirect()->route('posts.index');
@@ -110,7 +116,7 @@ class PostController extends Controller
         //
         $post = Post::find($id);
         $title = __('posts.update_post');
-        return view('admin.posts.edit')->with('data', $post)->with('title', $title)->with('categories', Category::all());
+        return view('admin.posts.edit')->with('data', $post)->with('title', $title)->with('categories', Category::all())->with('tags', Tag::all());
     }
 
     /**
@@ -152,6 +158,8 @@ class PostController extends Controller
         $post->slug = str_slug($request->title);
         $post->save();
 
+        $post->tags()->sync($request->tags);
+
 
 
         Session::flash('success', trans('posts.flash_updated'));
@@ -188,6 +196,7 @@ class PostController extends Controller
     public function kill($id){
         $data = Post::withTrashed()->where('id', $id)->first();
         $data->forceDelete();
+        $data->tags()->detach();
         Session::flash('success', trans('posts.permadelete'));
         return redirect()->back();
   
