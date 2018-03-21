@@ -13,6 +13,7 @@ return [
 
     'title' => 'Title',
     'content' => 'Content',
+    'slug' => 'Slug',
     'featured' => 'Fetaured Image',
     'category' => 'Category',
     'update_post' => 'Update Post',

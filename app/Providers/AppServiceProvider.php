@@ -65,7 +65,27 @@ class AppServiceProvider extends ServiceProvider
 
                     ],
                 ],
-            ]);          
+            ]);    
+            $event->menu->add([
+                'text' => __('general.users'),
+                'icon' => 'user',
+                'submenu' => [
+                    [
+                        'text' => __('general.users_view'),
+                        'url' => route('users.index'),
+                    ],
+                    [
+                        'text' => __('general.roles_view'),
+                        'url' => route('roles.index'),
+
+                    ],
+                    [
+                        'text' => __('general.permissions_view'),
+                        'url' => route('permissions.index'),
+
+                    ],
+                ],
+            ]);        
         });
     }
 

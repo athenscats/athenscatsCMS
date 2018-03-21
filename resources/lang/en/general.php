@@ -38,6 +38,23 @@ return [
     'posts' => 'Posts',
     'posts_view' => 'All Posts',
     'posts_add' => 'New Post',
+    'trashed_posts_view' => 'Trashed Posts',
+
+    'tags' => 'Tags',
+    'tags_view' => 'All Tags',
+    'tags_add' => 'New Tag',
+
+    'users' => 'Users',
+    'users_view' => 'All Users',
+    'users_add' => 'New User',
+
+    'roles' => 'Roles',
+    'roles_view' => 'All Roles',
+    'roles_add' => 'New Role',
+
+    'permissions' => 'Permissions',
+    'permissions_view' => 'All Perissions',
+    'permissions_add' => 'New Permsission',
 
 
 ];

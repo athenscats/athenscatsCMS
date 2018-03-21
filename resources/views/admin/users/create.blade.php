@@ -14,7 +14,7 @@
             <!-- small box -->
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">@lang('general.posts_add')</h3>
+                    <h3 class="box-title">@lang('general.users_add')</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
@@ -23,58 +23,50 @@
                     </div>
                 </div>
                 <div class="box-body">
-                    <form action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('users.store') }}" method="post">
                         {{ csrf_field() }}
                         <div class="form-group">
-                            <label for="title" >@lang('posts.title')</label>
-                            <input type="text" name="title" class="form-control">
+                            <label for="name" >@lang('users.name')</label>
+                            <input type="text" name="name" class="form-control">
 
                         </div>
                         <div class="row">
-                            <div class="col-xs-12 col-lg-6">
-                                <div class="form-group">
-                                    <label for="category_id">@lang('categories.name')</label>
-                                    <select class="form-control category_id" name="category_id" style="width: 100%;">
-                                        @foreach($categories as $category)
-                                            <option value="{{$category->id}}">{{$category->name}}</option>
-                                        @endforeach
-                                    </select>
-        
-                                </div>
+                            <div class="col-xs-12">
+                                    <label for="email">E-mail</label>
+                                    <input type="email" name="email" class="form-control">
                             </div>
-                            <div class="col-xs-12 col-lg-6">
-                        
-                                <div class="form-group">
-                                        <label for="featured" >Post Featured Image</label>
-                                        <input type="file" name="featured">             
-                                    <p class="help-block">Insert Featured Image.</p>
-                                  </div>
-                            </div>
-                        </div>
+                        </div> 
                         <div class="row">
                             <div class="col-xs-12">
-                                    <label for="tags">Tags</label>
-                                    @foreach($tags as $tag)                               
+                                    <label for="password">Password</label>
+                                    <input type="password" name="password" class="form-control">
+                            </div>
+                        </div> 
+                        <div class="row">
+                            <div class="col-xs-12">
+                                    <label for="password">Confirm Password</label>
+                                    <input type="password" name="password_confirmation" class="form-control">
+                            </div>
+                        </div> 
+                        <div class="row">
+                            <div class="col-xs-12">
+                                    <label for="roles">Roles</label>
+                                    @foreach($roles as $role)                               
                                     <div class="checkbox">
                                             <label>
-                                              <input type="checkbox" name="tags[]" value="{{$tag->id}}"> {{$tag->name}}
+                                              <input type="checkbox" name="roles[]" value="{{$role->id}}"> {{$role->name}}
                                             </label>
                                           </div>
                                 @endforeach
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <label for="content">Content</label>
-                                <textarea name="content" id="" cols="5" rows="5" class="form-control"></textarea>
-                            </div>
-                        </div>
+                        </div>                        
+                 
                         <br>
                         <div class="row">
                             <div class="col-xs-4 col-md-4">
                                 <div class="form-group">
 
-                                    <a class="btn btn-danger" href="{{route ('posts.index')}}">@lang('general.cancel')</a>
+                                    <a class="btn btn-danger" href="{{route ('users.index')}}">@lang('general.cancel')</a>
 
 
                                 </div>
