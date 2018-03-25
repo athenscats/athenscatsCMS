@@ -18,9 +18,8 @@ class RoleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
+    public function __construct() {
+        $this->middleware(['auth', 'isAdmin']);//isAdmin middleware lets only users with a //specific permission permission to access these resources
     }
 
     public function index()
@@ -86,12 +85,13 @@ class RoleController extends Controller
      * @param  \App\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function edit(Role $role)
+    public function edit($id)
     {
         //
+        $title = "Edit Role";
         $role = Role::findOrFail($id);
         $permissions = Permission::all();
-        return view('admin.roles.edit')->with('data', $role)->with('permissions', $permissions);
+        return view('admin.roles.edit')->with('data', $role)->with('permissions', $permissions)->with('title', $title);
     }
 
     /**

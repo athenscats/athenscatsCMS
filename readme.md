@@ -13,6 +13,15 @@
 
 1. Toastr: Simple javascript toast notifications (http://www.toastrjs.com)
 
+## To Do
+
+1. User Management
+2. To Do Module
+3. Portfolio Module
+4. Hotels Module
+    - Destinations
+    - Hotels
+
 
 ## Security Vulnerabilities
 

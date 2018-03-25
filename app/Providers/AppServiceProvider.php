@@ -16,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(Dispatcher $events)
     {
         $events->listen(BuildingMenu::class, function (BuildingMenu $event) {
-            $event->menu->add('Service Provider MENU');
+            $event->menu->add('Administrator Menu');
             $event->menu->add([
                 'text' => __('general.posts'),
                 'icon' => 'file-o',
@@ -39,6 +39,7 @@ class AppServiceProvider extends ServiceProvider
             $event->menu->add([
                 'text' => __('general.categories'),
                 'icon' => 'circle-o-notch',
+                'permission' => 'CRUD Taxonomy',
                 'submenu' => [
                     [
                         'text' => __('general.categories_view'),
@@ -51,9 +52,11 @@ class AppServiceProvider extends ServiceProvider
                     ],
                 ],
             ]);
+            
             $event->menu->add([
                 'text' => __('general.tags'),
                 'icon' => 'circle-o-notch',
+                'permission' => 'CRUD Taxonomy',
                 'submenu' => [
                     [
                         'text' => __('general.tags_view'),
@@ -66,9 +69,11 @@ class AppServiceProvider extends ServiceProvider
                     ],
                 ],
             ]);    
+       
             $event->menu->add([
                 'text' => __('general.users'),
                 'icon' => 'user',
+                'permission' => 'Administer roles & permissions',
                 'submenu' => [
                     [
                         'text' => __('general.users_view'),

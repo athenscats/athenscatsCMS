@@ -45,7 +45,15 @@
                             <tr>
                                 <td>    {{$dat->name}}</td>
                                 <td>    {{$dat->email}}</td>
-                                <td>    --Roles--</td>
+                                <td> 
+                                    <ul>  
+                                    @foreach($dat->roles as $role)
+                                    <li>
+                                    {{$role->name}}
+                                </li>
+                                    @endforeach
+                                    </ul>   
+                                </td>
                     
                                 
                                 <td>
@@ -56,22 +64,16 @@
                                         {{ csrf_field() }}
                                         <input type="hidden" name="_method" value="delete">
                                         <div class="btn-group">
-                                            <a href="{{ route('users.show',$dat->id) }}" data-toggle="tooltip"
-                                               title="View Category" class="btn btn-default btn-sm"><i
-                                                        class='fa fa-eye'></i></a>
                                             <a href="{{ route('users.edit',$dat->id) }}" data-toggle="tooltip"
-                                               title="Edit Category" class="btn btn-default btn-sm"><i
+                                               title="Edit User" class="btn btn-default btn-sm"><i
                                                         class='fa fa-pencil'></i></a>
-                                            <button type="submit" data-toggle="tooltip" title="Delete Category"
+                                            <button type="submit" data-toggle="tooltip" title="Delete User"
                                                     class="btn btn-default btn-sm"><i class='fa fa-trash'></i></button>
                                         </div>
                                     </form>
-
                                 </td>
-
                             </tr>
                         @endforeach
-
                         </tbody>
                         <tfoot>
                         <tr>

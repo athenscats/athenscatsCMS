@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
 
 class UsersTableSeeder extends Seeder
 {
@@ -12,10 +15,32 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         //
-        App\User::create([
-            'name' => 'Errikos',
+        $user = App\User::create([
+            'name' => 'Eric',
             'email' => 'athenscatsgr@gmail.com',
-            'password' => bcrypt('Avincito13')
+            'password' => 'Avincito13'
         ]);
+        $user->assignRole('owner');
+
+        $user = App\User::create([
+            'name' => 'Bonanza',
+            'email' => 'bonanza@gmail.com',
+            'password' => 'Bonanza'
+        ]);
+        $user->assignRole('Moderator');
+
+        $user = App\User::create([
+            'name' => 'Navarhos',
+            'email' => 'navarhos@gmail.com',
+            'password' => 'Navarhos'
+        ]);
+        $user->assignRole('Writer');
+
+        $user = App\User::create([
+            'name' => 'simpleuser',
+            'email' => 'simpleuser@gmail.com',
+            'password' => 'simpleuser'
+        ]);
+        $user->assignRole('User');
     }
 }

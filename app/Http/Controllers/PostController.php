@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
 use App\Tag;
+use Auth;
+
 
 class PostController extends Controller
 {
@@ -16,6 +18,10 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct() {
+        $this->middleware(['auth', 'clearance'])->except('index', 'show');
+    }
+
     public function index()
     {
         //
