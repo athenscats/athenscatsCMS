@@ -13,7 +13,22 @@ class CategoriesSeeder extends Seeder
     {
         //
         App\Category::create([
-            'name' => 'Uncategorized',
+            'name' => 'Travel',
+        ]);
+        App\Category::create([
+            'name' => 'Moto GP',
+        ]);
+        App\Category::create([
+            'name' => 'Web Development',
+        ]);
+        App\Category::create([
+            'name' => 'Arduino',
+        ]);
+        App\Category::create([
+            'name' => 'Raspberry Pi',
+        ]);
+        App\Category::create([
+            'name' => 'Gaming',
         ]);
     }
 }

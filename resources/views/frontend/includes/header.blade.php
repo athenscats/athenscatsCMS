@@ -5,7 +5,7 @@
             <div class="container">
 
                 <!-- Brand -->
-                <a class="navbar-brand waves-effect" href="" target="_blank">
+                <a class="navbar-brand waves-effect" href="{{route('index')}}" target="_self">
                     <strong class="blue-text">Athens Cats CMS</strong>
                 </a>
 
@@ -20,20 +20,14 @@
 
                     <!-- Left -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link waves-effect" href="#">Home
-                                <span class="sr-only">(current)</span>
+                        @foreach($categories as $category) 
+                        <li class="nav-item">
+                            <a href="{{route('category.single', ['id' => $category->id])}}" class="nav-link" >
+                                {{$category->name}}
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link waves-effect" href="https://mdbootstrap.com/material-design-for-bootstrap/" target="_blank">About MDB</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link waves-effect" href="https://mdbootstrap.com/getting-started/" target="_blank">Free download</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link waves-effect" href="https://mdbootstrap.com/bootstrap-tutorial/" target="_blank">Free tutorials</a>
-                        </li>
+                        @endforeach
+                        
                     </ul>
 
                     <!-- Right -->
