@@ -16,16 +16,6 @@ Route::get('/',  [
     'as' => 'index'
 ]);
 
-Route::get('/post/{slug}',  [
-    'uses' => 'FrontEndController@singlePost',
-    'as' => 'post.single'
-]);
-
-Route::get('/category/{id}',  [
-    'uses' => 'FrontEndController@category',
-    'as' => 'category.single'
-]);
-
 Auth::routes();
 
 Route::get('/admin', 'HomeController@index')->name('admin');
@@ -52,3 +42,13 @@ Route::group(['prefix' => 'admin', 'middleware'=> 'auth'], function (){
     Route::resource('permissions','PermissionController');
 
 });
+
+Route::get('/post/{slug}',  [
+    'uses' => 'FrontEndController@singlePost',
+    'as' => 'post.single'
+]);
+
+Route::get('/category/{cat_slug}',  [
+    'uses' => 'FrontEndController@category',
+    'as' => 'category.single'
+]);

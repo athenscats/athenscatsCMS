@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -9,6 +11,14 @@ class Post extends Model
 {
     //
 use SoftDeletes;
+use HasSlug;
+
+public function getSlugOptions() : SlugOptions
+{
+    return SlugOptions::create()
+        ->generateSlugsFrom('title')
+        ->saveSlugsTo('slug');
+}
 
     protected $fillable = [
         'title', 'content','featured','category_id','slug'

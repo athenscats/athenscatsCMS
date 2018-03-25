@@ -50,11 +50,15 @@ return [
 
     'roles' => 'Roles',
     'roles_view' => 'All Roles',
+    'roles_update' => 'Update Role',
     'roles_add' => 'New Role',
+
+
 
     'permissions' => 'Permissions',
     'permissions_view' => 'All Perissions',
     'permissions_add' => 'New Permsission',
+    'permissions_update' => 'Edit Permsission',
 
 
 ];

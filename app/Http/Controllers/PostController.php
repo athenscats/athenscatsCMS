@@ -90,7 +90,6 @@ class PostController extends Controller
             'content' => $request->content,
             'featured' => 'uploads/posts/' . $featured_new_name,
             'category_id' => $request->category_id,
-            'slug' => str_slug($request->title)
 
         ]);
 
@@ -161,12 +160,8 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->content = $request->content;
         $post->category_id = $request->category_id;
-        $post->slug = str_slug($request->title);
         $post->save();
-
         $post->tags()->sync($request->tags);
-
-
 
         Session::flash('success', trans('posts.flash_updated'));
         return redirect()->route('posts.index');

@@ -52,9 +52,7 @@
                                         {{ csrf_field() }}
                                         <input type="hidden" name="_method" value="delete">
                                         <div class="btn-group">
-                                            <a href="{{ route('roles.show',$dat->id) }}" data-toggle="tooltip"
-                                               title="View Category" class="btn btn-default btn-sm"><i
-                                                        class='fa fa-eye'></i></a>
+                                            
                                             <a href="{{ route('roles.edit',$dat->id) }}" data-toggle="tooltip"
                                                title="Edit Category" class="btn btn-default btn-sm"><i
                                                         class='fa fa-pencil'></i></a>

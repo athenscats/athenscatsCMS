@@ -56,8 +56,8 @@
                                         {{ csrf_field() }}
                                         <input type="hidden" name="_method" value="delete">
                                         <div class="btn-group">
-                                            <a href="{{ route('posts.show',$dat->id) }}" data-toggle="tooltip"
-                                               title="View Post" class="btn btn-default btn-sm"><i
+                                            <a href="{{route('post.single', ['slug' => $dat->slug])}}" data-toggle="tooltip"
+                                               title="View Post" target="_blank" class="btn btn-default btn-sm"><i
                                                         class='fa fa-eye'></i></a>
                                             <a href="{{ route('posts.edit',$dat->id) }}" data-toggle="tooltip"
                                                title="Edit Post" class="btn btn-default btn-sm"><i

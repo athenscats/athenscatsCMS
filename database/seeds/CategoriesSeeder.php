@@ -14,6 +14,7 @@ class CategoriesSeeder extends Seeder
         //
         App\Category::create([
             'name' => 'Travel',
+            'slug' => 'travel'
         ]);
         App\Category::create([
             'name' => 'Moto GP',

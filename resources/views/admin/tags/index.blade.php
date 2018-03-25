@@ -52,7 +52,7 @@
                                         {{ csrf_field() }}
                                         <input type="hidden" name="_method" value="delete">
                                         <div class="btn-group">
-                                            <a href="{{ route('tags.show',$dat->id) }}" data-toggle="tooltip"
+                                            <a href="#" data-toggle="tooltip"
                                                title="View Tag" class="btn btn-default btn-sm"><i
                                                         class='fa fa-eye'></i></a>
                                             <a href="{{ route('tags.edit',$dat->id) }}" data-toggle="tooltip"

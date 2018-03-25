@@ -22,7 +22,7 @@
                     <ul class="navbar-nav mr-auto">
                         @foreach($categories as $category) 
                         <li class="nav-item">
-                            <a href="{{route('category.single', ['id' => $category->id])}}" class="nav-link" >
+                            <a href="{{route('category.single', ['slug' => $category->slug])}}" class="nav-link" >
                                 {{$category->name}}
                             </a>
                         </li>
@@ -33,21 +33,16 @@
                     <!-- Right -->
                     <ul class="navbar-nav nav-flex-icons">
                         <li class="nav-item">
-                            <a href="https://www.facebook.com/mdbootstrap" class="nav-link waves-effect" target="_blank">
+                            <a href="#" class="nav-link waves-effect" target="_blank">
                                 <i class="fa fa-facebook"></i>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="https://twitter.com/MDBootstrap" class="nav-link waves-effect" target="_blank">
+                            <a href="#" class="nav-link waves-effect" target="_blank">
                                 <i class="fa fa-twitter"></i>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="nav-link border border-light rounded waves-effect"
-                                target="_blank">
-                                <i class="fa fa-github mr-2"></i>MDB GitHub
-                            </a>
-                        </li>
+                       
                     </ul>
 
                 </div>

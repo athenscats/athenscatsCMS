@@ -29,7 +29,7 @@ class TagController extends Controller
     public function create()
     {
         //
-        $title = 'Add Tag';
+        $title = __('tags.new');
         return view('admin.tags.create')->with('title', $title);
     }
 
@@ -77,7 +77,7 @@ class TagController extends Controller
     {
         //
         $tag = Tag::find($id);
-        $title = __('tags.update_tags');
+        $title = __('tags.edit');
         return view('admin.tags.edit')->with('data', $tag)->with('title', $title);
     }
 

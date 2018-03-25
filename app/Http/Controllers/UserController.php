@@ -33,7 +33,7 @@ class UserController extends Controller
         $data = User::with('roles:name')->get();
         //$title = trans('trclient.all_clients');
         //$title = __('general.hotels_view');
-        $title = "All Users";
+        $title = __('users.all');
         return view('admin.users.index')->with('data', $data)->with('title', $title);
     }
 
@@ -46,7 +46,7 @@ class UserController extends Controller
     {
         //
         $roles = Role::get();
-        $title = "Add User";
+        $title = __('users.new');
         return view('admin.users.create')->with('roles', $roles)->with('title', $title);
     }
 
@@ -102,7 +102,7 @@ class UserController extends Controller
         //
         $user = User::findOrFail($id); //Get user with specified id
         $roles = Role::get(); //Get all roles
-        $title = "Update User";
+        $title = __('users.edit');
         return view('admin.users.edit')->with('roles', $roles)->with('data', $user)->with('title', $title);
     }
 

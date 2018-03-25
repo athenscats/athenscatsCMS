@@ -51,10 +51,7 @@
                                           action="{{ route('permissions.destroy',$dat->id) }}">
                                         {{ csrf_field() }}
                                         <input type="hidden" name="_method" value="delete">
-                                        <div class="btn-group">
-                                            <a href="{{ route('permissions.show',$dat->id) }}" data-toggle="tooltip"
-                                               title="View Category" class="btn btn-default btn-sm"><i
-                                                        class='fa fa-eye'></i></a>
+                                        <div class="btn-group">                                            
                                             <a href="{{ route('permissions.edit',$dat->id) }}" data-toggle="tooltip"
                                                title="Edit Category" class="btn btn-default btn-sm"><i
                                                         class='fa fa-pencil'></i></a>

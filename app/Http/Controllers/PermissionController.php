@@ -28,7 +28,7 @@ class PermissionController extends Controller
     {
         //
         $data = Permission::all();
-        $title = "All Permissions";
+        $title = __('permissions.all');
         return view('admin.permissions.index')->with('data', $data)->with('title', $title);
         
     }
@@ -42,7 +42,7 @@ class PermissionController extends Controller
     {
         //
         $roles = Role::get(); //Get all roles
-        $title = "New Permission";
+        $title = __('permissions.new');
         return view('admin.permissions.create')->with('roles', $roles)->with('title', $title);
 
     }
@@ -93,7 +93,12 @@ class PermissionController extends Controller
     public function edit($id)
     {
         //
-        return view('admin.permissions.edit');
+        $title = __('permissions.edit');
+        $permission = Role::findOrFail($id);
+        $roles = Role::get(); //Get all roles
+        return view('admin.permissions.edit')->with('roles', $roles)->with('data', $permission)->with('title', $title);
+
+
     }
 
     /**

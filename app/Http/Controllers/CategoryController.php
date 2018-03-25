@@ -19,7 +19,7 @@ class CategoryController extends Controller
         $data = Category::all();
         //$title = trans('trclient.all_clients');
         //$title = __('general.hotels_view');
-        $title = "All Categories";
+        $title = __('categories.all');
         return view('admin.categories.index')->with('data', $data)->with('title', $title);
     }
 
@@ -32,7 +32,7 @@ class CategoryController extends Controller
     {
         //
                 //$title = __('general.hotels_add');
-                $title = 'Add Category';
+                $title = __('categories.new');
                 return view('admin.categories.create')->with('title', $title);
     }
 

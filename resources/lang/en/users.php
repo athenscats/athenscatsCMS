@@ -12,13 +12,15 @@ return [
     */
 
     'name' => 'Name',
-    'tag' => 'Tag',
-    'new' => 'New Tag',
-    'all' => 'All Tags',
-    'edit' => 'Edit Tag',
-    'update_tag' => 'Update Tag',
-    'flash_new'=>'New Tag Added',
-    'flash_delete'=>'Tag Deleted',
-    'flash_update'=>'Tag Updated',
+    'email' => 'E-mail',
+    'roles'=> 'Roles',
+
+    'new' => 'New User',
+    'edit' => 'Edit User',
+    'all' => 'All Users ',
+
+    'flash_new'=>'New User Added',
+    'flash_delete'=>'User Deleted',
+    'flash_update'=>'User Updated',
 
 ];
