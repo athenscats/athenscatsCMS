@@ -79,7 +79,7 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <label for="content">Content</label>
-                            <textarea name="content" id="" cols="5" rows="5" class="form-control">{{$data->content}}</textarea>
+                            <textarea name="content" id="content"  class="form-control">{{$data->content}}</textarea>
                             </div>
                         </div>
                         <br>
@@ -118,4 +118,21 @@
     <!-- /.row -->
     <!-- Default box -->
 
+@stop
+@section ('css')
+@stop
+
+@section ('js')
+
+<script src="//cdn.ckeditor.com/4.9.0/standard/ckeditor.js"></script>
+<script>
+       
+        var options = {
+            filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+            filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+            filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+            filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
+          };
+          CKEDITOR.replace( 'content', options );
+</script>
 @stop
