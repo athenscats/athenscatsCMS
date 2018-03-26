@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-@include('admin.includes.errors')
+    @include('admin.includes.errors')
     <!-- Small boxes (Stat box) -->
     <div class="row">
         <div class="col-lg-6 col-xs-12">
@@ -26,27 +26,22 @@
                     <form action="{{ route('categories.store') }}" method="post">
                         {{ csrf_field() }}
                         <div class="form-group">
-                            <label for="name" >@lang('categories.name')</label>
+                            <label for="name">@lang('categories.name')</label>
                             <input type="text" name="name" class="form-control">
-
-                        </div>                       
-                 
+                        </div>
                         <br>
                         <div class="row">
                             <div class="col-xs-4 col-md-4">
                                 <div class="form-group">
-
-                                    <a class="btn btn-danger" href="{{route ('categories.index')}}">@lang('general.cancel')</a>
-
-
+                                    <a class="btn btn-danger"
+                                       href="{{route ('categories.index')}}">@lang('general.cancel')</a>
                                 </div>
                             </div>
                             <div class="col-md-offset-4 col-md-4">
                                 <div class="form-group">
 
-                                    <button class="btn btn-success pull-right" type="submit">@lang('general.submit')</button>
-
-
+                                    <button class="btn btn-success pull-right"
+                                            type="submit">@lang('general.submit')</button>
                                 </div>
                             </div>
                         </div>
@@ -62,9 +57,7 @@
             <!-- /.box -->
         </div>
         <!-- ./col -->
-
     </div>
     <!-- /.row -->
     <!-- Default box -->
-
 @stop

@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-@include('admin.includes.errors')
+    @include('admin.includes.errors')
     <!-- Small boxes (Stat box) -->
     <div class="row">
         <div class="col-lg-6 col-xs-12">
@@ -27,9 +27,8 @@
                         {{ csrf_field() }}
                         <input type="hidden" name="_method" value="PUT">
                         <div class="form-group">
-                            <label for="title" >@lang('posts.title')</label>
+                            <label for="title">@lang('posts.title')</label>
                             <input type="text" name="title" class="form-control" value="{{$data->title}}">
-
                         </div>
                         <div class="row">
                             <div class="col-xs-12 col-lg-6">
@@ -37,71 +36,63 @@
                                     <label for="category_id">@lang('categories.name')</label>
                                     <select class="form-control category_id" name="category_id" style="width: 100%;">
                                         @foreach($categories as $category)
-                                            <option value="{{$category->id}}" 
-                                                @if($category->id == $data->category_id)
-                                                selected
-                                                @endif>
+                                            <option value="{{$category->id}}"
+                                                    @if($category->id == $data->category_id)
+                                                    selected
+                                                    @endif>
                                                 {{$category->name}}</option>
                                         @endforeach
                                     </select>
-        
+
                                 </div>
                             </div>
                             <div class="col-xs-12 col-lg-6">
                                 <div class="form-group">
-                                    <label for="featured" >Post Featured Image</label>
+                                    <label for="featured">Post Featured Image</label>
                                     <input type="file" name="featured" class="form-control">
                                     <img src="{{$data->featured}}" alt="{{$data->title}}" height="100px">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                                <div class="col-xs-12">
-                                        <label for="tags">Tags</label>
-                                        @foreach($tags as $tag)                               
-                                        <div class="checkbox">
-                                                <label>
-                                                  <input type="checkbox" name="tags[]" value="{{$tag->id}}"
-                                                  @foreach($data->tags as $t)
-                                                        @if($tag->id == $t-> id)
-                                                            checked
-                                                        @endif
-                                                  @endforeach
-                                                  
-                                                  > {{$tag->name}}
-                                                </label>
-                                              </div>
-                                    @endforeach
-    
-                                    
-                                </div>
+                            <div class="col-xs-12">
+                                <label for="tags">Tags</label>
+                                @foreach($tags as $tag)
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="tags[]" value="{{$tag->id}}"
+                                                   @foreach($data->tags as $t)
+                                                   @if($tag->id == $t-> id)
+                                                   checked
+                                                    @endif
+                                                    @endforeach
+                                            > {{$tag->name}}
+                                        </label>
+                                    </div>
+                                @endforeach
                             </div>
+                        </div>
                         <div class="row">
                             <div class="col-xs-12">
                                 <label for="content">Content</label>
-                            <textarea name="content" id="content"  class="form-control">{{$data->content}}</textarea>
+                                <textarea name="content" id="content" class="form-control">{{$data->content}}</textarea>
                             </div>
                         </div>
                         <br>
                         <div class="row">
                             <div class="col-xs-4 col-md-4">
                                 <div class="form-group">
-
-                                    <a class="btn btn-danger" href="{{route ('posts.index')}}">@lang('general.cancel')</a>
-
-
+                                    <a class="btn btn-danger"
+                                       href="{{route ('posts.index')}}">@lang('general.cancel')</a>
                                 </div>
                             </div>
                             <div class="col-md-offset-4 col-md-4">
                                 <div class="form-group">
-
-                                    <button class="btn btn-success pull-right" type="submit">@lang('general.submit')</button>
-
-
+                                    <button class="btn btn-success pull-right"
+                                            type="submit">@lang('general.submit')</button>
                                 </div>
                             </div>
                         </div>
-
                     </form>
                 </div>
                 <!-- /.box-body -->
@@ -113,7 +104,6 @@
             <!-- /.box -->
         </div>
         <!-- ./col -->
-
     </div>
     <!-- /.row -->
     <!-- Default box -->
@@ -124,15 +114,15 @@
 
 @section ('js')
 
-<script src="//cdn.ckeditor.com/4.9.0/standard/ckeditor.js"></script>
-<script>
-       
+    <script src="//cdn.ckeditor.com/4.9.0/standard/ckeditor.js"></script>
+    <script>
+
         var options = {
             filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
             filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
             filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
             filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
-          };
-          CKEDITOR.replace( 'content', options );
-</script>
+        };
+        CKEDITOR.replace('content', options);
+    </script>
 @stop

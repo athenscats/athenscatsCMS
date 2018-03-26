@@ -11,7 +11,6 @@
     <div class="box">
         <div class="box-header with-border">
             <h3 class="box-title">@lang('general.posts')</h3>
-
             <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
                         title="Collapse">
@@ -28,14 +27,12 @@
             <hr>
             <div class="row">
                 <div class="col-xs-12">
-
-
                     <table id="data" class="table table-bordered table-hover table-striped">
                         <thead>
                         <tr>
                             <th>@lang('posts.featured')</th>
-                            <th>@lang('posts.title')    </th>   
-                            <th>@lang('posts.slug')    </th>                   
+                            <th>@lang('posts.title')    </th>
+                            <th>@lang('posts.slug')    </th>
                             <th>@lang('posts.category')</th>
                             <th width="280px">@lang('general.action')</th>
                         </tr>
@@ -43,20 +40,18 @@
                         <tbody>
                         @foreach($data as $dat)
                             <tr>
-                                <td>    <img src="{{$dat->featured}}" alt="{{$dat->title}}" width="90px"></td>
-                                <td>    {{$dat->title}}</td> 
-                                <td>    {{$dat->slug}}</td> 
+                                <td><img src="{{$dat->featured}}" alt="{{$dat->title}}" width="90px"></td>
+                                <td>    {{$dat->title}}</td>
+                                <td>    {{$dat->slug}}</td>
                                 <td>    {{$dat->category->name}}</td>
-                                
                                 <td>
-
-
                                     <form class="pull-right" method="post"
                                           action="{{ route('posts.destroy',$dat->id) }}">
                                         {{ csrf_field() }}
                                         <input type="hidden" name="_method" value="delete">
                                         <div class="btn-group">
-                                            <a href="{{route('post.single', ['slug' => $dat->slug])}}" data-toggle="tooltip"
+                                            <a href="{{route('post.single', ['slug' => $dat->slug])}}"
+                                               data-toggle="tooltip"
                                                title="View Post" target="_blank" class="btn btn-default btn-sm"><i
                                                         class='fa fa-eye'></i></a>
                                             <a href="{{ route('posts.edit',$dat->id) }}" data-toggle="tooltip"
@@ -66,20 +61,17 @@
                                                     class="btn btn-default btn-sm"><i class='fa fa-trash'></i></button>
                                         </div>
                                     </form>
-
                                 </td>
-
                             </tr>
                         @endforeach
-
                         </tbody>
                         <tfoot>
                         <tr>
-                                <th>@lang('posts.featured')</th>
-                                <th>@lang('posts.title')    </th>  
-                                <th>@lang('posts.slug')    </th>                     
-                                <th>@lang('posts.category')</th>
-                                <th width="280px">@lang('general.action')</th>
+                            <th>@lang('posts.featured')</th>
+                            <th>@lang('posts.title')    </th>
+                            <th>@lang('posts.slug')    </th>
+                            <th>@lang('posts.category')</th>
+                            <th width="280px">@lang('general.action')</th>
                         </tr>
                         </tfoot>
                     </table>

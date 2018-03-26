@@ -11,7 +11,6 @@
     <div class="box">
         <div class="box-header with-border">
             <h3 class="box-title">@lang('general.categories')</h3>
-
             <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
                         title="Collapse">
@@ -28,13 +27,11 @@
             <hr>
             <div class="row">
                 <div class="col-xs-12">
-
-
                     <table id="data" class="table table-bordered table-hover table-striped">
                         <thead>
                         <tr>
                             <th>@lang('categories.name')    </th>
-                 
+
                             <th width="280px">@lang('general.action')</th>
                         </tr>
                         </thead>
@@ -43,12 +40,8 @@
                             <tr>
                                 <td>
                                     {{$dat->name}}
-                            </td>
-                    
-                                
+                                </td>
                                 <td>
-
-
                                     <form class="pull-right" method="post"
                                           action="{{ route('categories.destroy',$dat->id) }}">
                                         {{ csrf_field() }}
@@ -64,17 +57,14 @@
                                                     class="btn btn-default btn-sm"><i class='fa fa-trash'></i></button>
                                         </div>
                                     </form>
-
                                 </td>
-
                             </tr>
                         @endforeach
-
                         </tbody>
                         <tfoot>
                         <tr>
                             <th>@lang('categories.name')    </th>
-                
+
                             <th width="280px">@lang('general.action')</th>
                         </tr>
                         </tfoot>
