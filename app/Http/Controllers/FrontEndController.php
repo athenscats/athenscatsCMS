@@ -14,7 +14,7 @@ class FrontEndController extends Controller
         $count = Post::count();
         $skip = 1;
         $limit = $count - $skip; // the limit
-        return view('index')->with('categories', Category::all()->take(4))
+        return view('frontend.index')->with('categories', Category::all()->take(4))
                             ->with('first_post', Post::orderBy('created_at', 'desc')->first())
                             ->with('posts', Post::orderBy('created_at', 'desc')->skip(1)->take($limit)->paginate(6));
     }

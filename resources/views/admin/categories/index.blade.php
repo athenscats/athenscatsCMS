@@ -41,7 +41,9 @@
                         <tbody>
                         @foreach($data as $dat)
                             <tr>
-                                <td>    {{$dat->name}}</td>
+                                <td>
+                                    {{$dat->name}}
+                            </td>
                     
                                 
                                 <td>
