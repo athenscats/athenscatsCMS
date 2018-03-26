@@ -7,5 +7,6 @@
 @stop
 
 @section('content')
-    <p>You are logged in!</p>
+    <p>Welcome to Athens Cats CMS</p>
+    <p>Let's Build Something Nice/p>
 @stop

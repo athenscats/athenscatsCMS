@@ -11,7 +11,6 @@
     <div class="box">
         <div class="box-header with-border">
             <h3 class="box-title">@lang('general.users')</h3>
-
             <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
                         title="Collapse">
@@ -28,37 +27,30 @@
             <hr>
             <div class="row">
                 <div class="col-xs-12">
-
-
                     <table id="data" class="table table-bordered table-hover table-striped">
                         <thead>
                         <tr>
                             <th>@lang('users.name')</th>
                             <th>@lang('users.email')</th>
                             <th>@lang('users.roles')</th>
-                 
                             <th width="280px">@lang('general.action')</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($data as $dat)
                             <tr>
-                                <td>    {{$dat->name}}</td>
-                                <td>    {{$dat->email}}</td>
-                                <td> 
-                                    <ul>  
-                                    @foreach($dat->roles as $role)
-                                    <li>
-                                    {{$role->name}}
-                                </li>
-                                    @endforeach
-                                    </ul>   
-                                </td>
-                    
-                                
+                                <td>{{$dat->name}}</td>
+                                <td>{{$dat->email}}</td>
                                 <td>
-
-
+                                    <ul>
+                                        @foreach($dat->roles as $role)
+                                            <li>
+                                                {{$role->name}}
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </td>
+                                <td>
                                     <form class="pull-right" method="post"
                                           action="{{ route('users.destroy',$dat->id) }}">
                                         {{ csrf_field() }}
@@ -80,7 +72,6 @@
                             <th>@lang('users.name')</th>
                             <th>@lang('users.email')</th>
                             <th>@lang('users.roles')</th>
-                
                             <th width="280px">@lang('general.action')</th>
                         </tr>
                         </tfoot>

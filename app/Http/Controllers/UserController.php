@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\User;
 use Auth;
 
-
 //Importing laravel-permission models
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -22,8 +21,8 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-
-    public function __construct() {
+    public function __construct()
+    {
         $this->middleware(['auth', 'isAdmin']); //isAdmin middleware lets only users with a //specific permission permission to access these resources
     }
 
@@ -31,8 +30,6 @@ class UserController extends Controller
     {
         //
         $data = User::with('roles:name')->get();
-        //$title = trans('trclient.all_clients');
-        //$title = __('general.hotels_view');
         $title = __('users.all');
         return view('admin.users.index')->with('data', $data)->with('title', $title);
     }
@@ -53,29 +50,27 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         //
         $this->validate($request, [
-            'name'=>'required|max:120',
-            'email'=>'required|email|unique:users',
-            'password'=>'required|min:6|confirmed'
+            'name' => 'required|max:120',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6|confirmed'
         ]);
-
-        $user = User::create($request->only('email', 'name', 'password')); //Retrieving only the email and password data
-
+        //Retrieving only the email and password data
+        $user = User::create($request->only('email', 'name', 'password')); 
         $roles = $request['roles']; //Retrieving the roles field
-    //Checking if a role was selected
+        //Checking if a role was selected
         if (isset($roles)) {
-
             foreach ($roles as $role) {
-            $role_r = Role::where('id', '=', $role)->firstOrFail();            
-            $user->assignRole($role_r); //Assigning role to user
+                $role_r = Role::where('id', '=', $role)->firstOrFail();
+                $user->assignRole($role_r); //Assigning role to user
             }
-        }  
+        }
         Session::flash('success', trans('users.flash_new'));
         return redirect()->route('users.index');
     }
@@ -83,7 +78,7 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -94,7 +89,7 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -109,55 +104,46 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
-        $user = User::findOrFail($id); //Get role specified by id
-
+        //Get role specified by id
+        $user = User::findOrFail($id); 
         //Validate name, email and password fields  
         $rules = [
-            'name'=>'required|max:120',
-            'email'=>'required|email|unique:users,email,'.$id,
-            
-         ]; 
-         if ($request->password) {
-             $rules['password'] = 'min:6|confirmed';
-          
-         }
-
-
-            
-          $this->validate($request, $rules);
-
-
-            //$input = $request->only(['name', 'email', 'password']); //Retreive the name, email and password fields
-            $input = $request->only(['name', 'email', 'password']); //Retreive the name, email and password fields
-            if (empty($input['password'])) {
-
-                $input = array_except($input, array('password'));
-            }
-
-            $roles = $request['roles']; //Retreive all roles
-            $user->fill($input)->save();
-    
-            if (isset($roles)) {        
-                $user->roles()->sync($roles);  //If one or more role is selected associate user to roles          
-            }        
-            else {
-                $user->roles()->detach(); //If no role is selected remove exisiting role associated to a user
-            }
-            return redirect()->route('users.index');
-
+            'name' => 'required|max:120',
+            'email' => 'required|email|unique:users,email,' . $id,
+        ];
+        if ($request->password) {
+            $rules['password'] = 'min:6|confirmed';
         }
+        $this->validate($request, $rules);
+
+        //Retreive the name, email and password fields
+        $input = $request->only(['name', 'email', 'password']);
+        if (empty($input['password'])) {
+            $input = array_except($input, array('password'));
+        }
+
+        $roles = $request['roles']; //Retreive all roles
+        $user->fill($input)->save();
+
+        if (isset($roles)) {
+            $user->roles()->sync($roles);  //If one or more role is selected associate user to roles
+        } else {
+            $user->roles()->detach(); //If no role is selected remove exisiting role associated to a user
+        }
+        return redirect()->route('users.index');
+
+    }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

@@ -11,26 +11,21 @@
 |
 */
 
-Route::get('/',  [
-    'uses' => 'FrontEndController@index',
-    'as' => 'index'
-]);
-
 Auth::routes();
 
 Route::get('/admin', 'HomeController@index')->name('admin');
 
-Route::group(['prefix' => 'admin', 'middleware'=> 'auth'], function (){
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
-    Route::get('posts/trashed',  [
+    Route::get('posts/trashed', [
         'uses' => 'PostController@trashed',
         'as' => 'posts.trashed'
     ]);
-    Route::get('posts/kill/{id}',  [
+    Route::get('posts/kill/{id}', [
         'uses' => 'PostController@kill',
         'as' => 'posts.kill'
     ]);
-    Route::get('posts/restore/{id}',  [
+    Route::get('posts/restore/{id}', [
         'uses' => 'PostController@restore',
         'as' => 'posts.restore'
     ]);
@@ -39,16 +34,21 @@ Route::group(['prefix' => 'admin', 'middleware'=> 'auth'], function (){
     Route::resource('tags', 'TagController');
     Route::resource('users', 'UserController');
     Route::resource('roles', 'RoleController');
-    Route::resource('permissions','PermissionController');
+    Route::resource('permissions', 'PermissionController');
 
 });
 
-Route::get('/post/{slug}',  [
+Route::get('/', [
+    'uses' => 'FrontEndController@index',
+    'as' => 'index'
+]);
+
+Route::get('/post/{slug}', [
     'uses' => 'FrontEndController@singlePost',
     'as' => 'post.single'
 ]);
 
-Route::get('/category/{cat_slug}',  [
+Route::get('/category/{cat_slug}', [
     'uses' => 'FrontEndController@category',
     'as' => 'category.single'
 ]);

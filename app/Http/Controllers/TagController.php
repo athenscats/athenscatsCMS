@@ -16,9 +16,9 @@ class TagController extends Controller
     public function index()
     {
         //
-      $data = Tag::all();
-      $title = __('general.tags_view');
-      return view('admin.tags.index')->with('data', $data)->with('title', $title);
+        $data = Tag::all();
+        $title = __('general.tags_view');
+        return view('admin.tags.index')->with('data', $data)->with('title', $title);
     }
 
     /**
@@ -36,7 +36,7 @@ class TagController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -44,12 +44,9 @@ class TagController extends Controller
         //
         $this->validate($request, [
             'name' => 'required|max:255',
-         
         ]);
         Tag::create([
             'name' => $request->name,
-           // 'featured' => 'uploads/posts/' . $featured_new_name
-
         ]);
 
         Session::flash('success', trans('tags.flash_new'));
@@ -59,7 +56,7 @@ class TagController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -70,7 +67,7 @@ class TagController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -84,8 +81,8 @@ class TagController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -104,14 +101,12 @@ class TagController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
-        //$tag = Tag::find($id);
-        //$tag->delete();
         Tag::destroy($id);
         Session::flash('success', trans('tags.flash_delete'));
         return redirect()->route('tags.index');

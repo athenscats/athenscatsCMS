@@ -28,10 +28,10 @@ class RolesAndPermissionsSeeder extends Seeder
         $role = Role::create(['name' => 'Writer']);
         $role->givePermissionTo('Create posts', 'Delete posts', 'Edit posts');
 
-        $role = Role::create(['name' => 'User']);      
+        $role = Role::create(['name' => 'User']);
 
         $role = Role::create(['name' => 'Moderator']);
-        $role->givePermissionTo(['Create posts', 'Delete posts', 'Edit posts','CRUD Taxonomy']);
+        $role->givePermissionTo(['Create posts', 'Delete posts', 'Edit posts', 'CRUD Taxonomy']);
 
         $role = Role::create(['name' => 'Super Admin']);
         $role->givePermissionTo(Permission::all());

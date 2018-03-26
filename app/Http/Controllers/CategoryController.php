@@ -17,8 +17,6 @@ class CategoryController extends Controller
     {
         //
         $data = Category::all();
-        //$title = trans('trclient.all_clients');
-        //$title = __('general.hotels_view');
         $title = __('categories.all');
         return view('admin.categories.index')->with('data', $data)->with('title', $title);
     }
@@ -31,46 +29,36 @@ class CategoryController extends Controller
     public function create()
     {
         //
-                //$title = __('general.hotels_add');
-                $title = __('categories.new');
-                return view('admin.categories.create')->with('title', $title);
+        $title = __('categories.new');
+        return view('admin.categories.create')->with('title', $title);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         //
-                //
-                $this->validate($request, [
-                    'name' => 'required|max:255',
-                 
-                ]);
-        
-                //$featured = $request->featured;
-        
-                //$featured_new_name = time() . $featured->getClientOriginalName();
-        
-               // $featured->move('uploads/posts', $featured_new_name);
-        
-                Category::create([
-                    'name' => $request->name,
-                   // 'featured' => 'uploads/posts/' . $featured_new_name
-        
-                ]);
-        
-                Session::flash('success', trans('categories.flash_new'));
-                return redirect()->route('categories.index');
+        $this->validate($request, [
+            'name' => 'required|max:255',
+        ]);
+
+        Category::create([
+            'name' => $request->name,
+            // 'featured' => 'uploads/posts/' . $featured_new_name
+        ]);
+
+        Session::flash('success', trans('categories.flash_new'));
+        return redirect()->route('categories.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -81,7 +69,7 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -90,14 +78,13 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $title = __('categories.update_category');
         return view('admin.categories.edit')->with('data', $category)->with('title', $title);
-   
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -116,7 +103,7 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

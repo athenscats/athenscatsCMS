@@ -47,8 +47,8 @@
                                         {{ csrf_field() }}
                                         <input type="hidden" name="_method" value="delete">
                                         <div class="btn-group">
-                                            <a href="{{ route('categories.show',$dat->id) }}" data-toggle="tooltip"
-                                               title="View Category" class="btn btn-default btn-sm"><i
+                                            <a href="{{route('category.single', ['slug' => $dat->slug])}}" data-toggle="tooltip"
+                                               title="View Category" target="_blank" class="btn btn-default btn-sm"><i
                                                         class='fa fa-eye'></i></a>
                                             <a href="{{ route('categories.edit',$dat->id) }}" data-toggle="tooltip"
                                                title="Edit Category" class="btn btn-default btn-sm"><i

@@ -11,7 +11,6 @@
     <div class="box">
         <div class="box-header with-border">
             <h3 class="box-title">@lang('general.roles')</h3>
-
             <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
                         title="Collapse">
@@ -28,31 +27,23 @@
             <hr>
             <div class="row">
                 <div class="col-xs-12">
-
-
                     <table id="data" class="table table-bordered table-hover table-striped">
                         <thead>
                         <tr>
-                            <th>@lang('roles.name')    </th>
-                 
+                            <th>@lang('roles.name')</th>
                             <th width="280px">@lang('general.action')</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($data as $dat)
                             <tr>
-                                <td>    {{$dat->name}}</td>
-                    
-                                
+                                <td>{{$dat->name}}</td>
                                 <td>
-
-
                                     <form class="pull-right" method="post"
                                           action="{{ route('roles.destroy',$dat->id) }}">
                                         {{ csrf_field() }}
                                         <input type="hidden" name="_method" value="delete">
                                         <div class="btn-group">
-                                            
                                             <a href="{{ route('roles.edit',$dat->id) }}" data-toggle="tooltip"
                                                title="Edit Category" class="btn btn-default btn-sm"><i
                                                         class='fa fa-pencil'></i></a>
@@ -60,17 +51,13 @@
                                                     class="btn btn-default btn-sm"><i class='fa fa-trash'></i></button>
                                         </div>
                                     </form>
-
                                 </td>
-
                             </tr>
                         @endforeach
-
                         </tbody>
                         <tfoot>
                         <tr>
-                            <th>@lang('roles.name')    </th>
-                
+                            <th>@lang('roles.name')</th>
                             <th width="280px">@lang('general.action')</th>
                         </tr>
                         </tfoot>

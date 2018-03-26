@@ -11,12 +11,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {       // Disable all mass assignment restrictions
-  
-         $this->call(RolesAndPermissionsSeeder::class);
-         $this->call(UsersTableSeeder::class);
-         $this->call(CategoriesSeeder::class);
-         $this->call(PostsTableSeeder::class);
-         // Re enable all mass assignment restrictions
+
+        $this->call(RolesAndPermissionsSeeder::class);
+        $this->call(UsersTableSeeder::class);
+        $this->call(CategoriesSeeder::class);
+        $this->call(PostsTableSeeder::class);
+        // Re enable all mass assignment restrictions
 
     }
 }
