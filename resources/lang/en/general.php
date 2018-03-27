@@ -48,6 +48,10 @@ return [
     'users_view' => 'All Users',
     'users_add' => 'New User',
 
+    'pages' => 'Pages',
+    'pages_view' => 'All Pages',
+    'pages_add' => 'New Page',
+
     'roles' => 'Roles',
     'roles_view' => 'All Roles',
     'roles_update' => 'Update Role',

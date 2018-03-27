@@ -19,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
             $event->menu->add('Administrator Menu');
             $event->menu->add([
                 'text' => __('general.posts'),
-                'icon' => 'file-o',
+                'icon' => 'newspaper-o',
                 'submenu' => [
                     [
                         'text' => __('general.posts_view'),
@@ -38,7 +38,7 @@ class AppServiceProvider extends ServiceProvider
             ]);   
             $event->menu->add([
                 'text' => __('general.categories'),
-                'icon' => 'circle-o-notch',
+                'icon' => 'table',
                 'permission' => 'CRUD Taxonomy',
                 'submenu' => [
                     [
@@ -55,7 +55,7 @@ class AppServiceProvider extends ServiceProvider
             
             $event->menu->add([
                 'text' => __('general.tags'),
-                'icon' => 'circle-o-notch',
+                'icon' => 'tags',
                 'permission' => 'CRUD Taxonomy',
                 'submenu' => [
                     [
@@ -66,6 +66,17 @@ class AppServiceProvider extends ServiceProvider
                         'text' => __('general.tags_add'),
                         'url' => route('tags.create'),
 
+                    ],
+                ],
+            ]); 
+            $event->menu->add([
+                'text' => __('general.pages'),
+                'icon' => 'file',
+                'permission' => 'Administer roles & permissions',
+                'submenu' => [
+                    [
+                        'text' => __('general.pages_view'),
+                        'url' => route('pages.index'),
                     ],
                 ],
             ]);    

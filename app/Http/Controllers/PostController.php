@@ -26,8 +26,7 @@ class PostController extends Controller
         //
         $data = Post::with('category')->get();
         //$title = trans('trclient.all_clients');
-        //$title = __('general.hotels_view');
-        $title = "All Posts";
+        $title = __('posts.all');
         return view('admin.posts.index')->with('data', $data)->with('title', $title);
     }
 
