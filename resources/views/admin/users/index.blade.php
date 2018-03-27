@@ -42,13 +42,11 @@
                                 <td>{{$dat->name}}</td>
                                 <td>{{$dat->email}}</td>
                                 <td>
-                                    <ul>
+                                   
                                         @foreach($dat->roles as $role)
-                                            <li>
-                                                {{$role->name}}
-                                            </li>
+                                        <div class="label  bg-blue"> {{$role->name}}</div>   
                                         @endforeach
-                                    </ul>
+                                    
                                 </td>
                                 <td>
                                     <form class="pull-right" method="post"

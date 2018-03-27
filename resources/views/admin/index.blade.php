@@ -8,5 +8,5 @@
 
 @section('content')
     <p>Welcome to Athens Cats CMS</p>
-    <p>Let's Build Something Nice/p>
+    <p>Let's Build Something Nice</p>
 @stop
