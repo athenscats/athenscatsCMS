@@ -30,27 +30,23 @@
                     <table id="data" class="table table-bordered table-hover table-striped">
                         <thead>
                         <tr>
-                            <th>@lang('pages.featured')</th>
                             <th>@lang('pages.title')    </th>
                             <th>@lang('pages.slug')    </th>
-                            <th>@lang('pages.category')</th>
                             <th width="280px">@lang('general.action')</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($data as $dat)
                             <tr>
-                                <td><img src="{{$dat->featured}}" alt="{{$dat->title}}" width="90px"></td>
                                 <td>    {{$dat->title}}</td>
                                 <td>    {{$dat->slug}}</td>
-                                <td>    {{$dat->category->name}}</td>
                                 <td>
-                                    <form class="pull-right" method="Page"
+                                    <form class="pull-right" method="post"
                                           action="{{ route('pages.destroy',$dat->id) }}">
                                         {{ csrf_field() }}
                                         <input type="hidden" name="_method" value="delete">
                                         <div class="btn-group">
-                                            <a href="{{route('Page.single', ['slug' => $dat->slug])}}"
+                                            <a href="#"
                                                data-toggle="tooltip"
                                                title="View Page" target="_blank" class="btn btn-default btn-sm"><i
                                                         class='fa fa-eye'></i></a>
@@ -67,10 +63,8 @@
                         </tbody>
                         <tfoot>
                         <tr>
-                            <th>@lang('pages.featured')</th>
                             <th>@lang('pages.title')    </th>
                             <th>@lang('pages.slug')    </th>
-                            <th>@lang('pages.category')</th>
                             <th width="280px">@lang('general.action')</th>
                         </tr>
                         </tfoot>

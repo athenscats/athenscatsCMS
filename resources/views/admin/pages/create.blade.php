@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <div class="box-body">
-                    <form action="{{ route('pages.store') }}" method="Page" enctype="multipart/form-data">
+                    <form action="{{ route('pages.store') }}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label for="title">@lang('pages.title')</label>
@@ -30,34 +30,14 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-12 col-lg-6">
-                                <div class="form-group">
-                                    <label for="category_id">@lang('categories.name')</label>
-                                    <select class="form-control category_id" name="category_id" style="width: 100%;">
-                                        @foreach($categories as $category)
-                                            <option value="{{$category->id}}">{{$category->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                                
                             </div>
                             <div class="col-xs-12 col-lg-6">
-                                <div class="form-group">
-                                    <label for="featured">Page Featured Image</label>
-                                    <input type="file" name="featured">
-                                    <p class="help-block">Insert Featured Image.</p>
-                                </div>
+                                
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-xs-12">
-                                <label for="tags">Tags</label>
-                                @foreach($tags as $tag)
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="tags[]" value="{{$tag->id}}"> {{$tag->name}}
-                                        </label>
-                                    </div>
-                                @endforeach
-                            </div>
+                            
                         </div>
                         <div class="row">
                             <div class="col-xs-12">

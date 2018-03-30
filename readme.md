@@ -29,6 +29,7 @@ Currently Using Framework: MDBoostrap Free (https://mdbootstrap.com/)
 1. SEO Helper (maybe https://github.com/ARCANEDEV/SEO-Helper)
 2. Find a way for frontend routes from root
 3. User Profile
+4. Menu Builder for Front End
 
 ## Security Vulnerabilities
 If you discover a security vulnerability promptly addressed.

@@ -78,6 +78,11 @@ class AppServiceProvider extends ServiceProvider
                         'text' => __('general.pages_view'),
                         'url' => route('pages.index'),
                     ],
+                    [
+                        'text' => __('general.pages_add'),
+                        'url' => route('pages.create'),
+
+                    ],
                 ],
             ]);    
        
